@@ -47,7 +47,8 @@ const urlBase = "https://rickandmortyapi.com/api/character/";
   console.log(response.data);
 })();
 
-app.get("/findCharacter", async (req, res) => {
+app.get("/findCharacter", async function (req, res) {
+  console.log(req.query);
   const response = await axios.get(urlBase, {
     // using axios params object - assigning name to the req.query.name
     // axios will use that to construct our url properly
@@ -62,6 +63,9 @@ app.get("/findCharacter", async (req, res) => {
     params: { name: req.query.name },
   });
 
+  const responseAlternative = await axios.get(
+    urlBase + `?name=${req.query.name}`
+  );
   // object de-structuring
   // with array de-structuring
   // link to mdn docs - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
@@ -133,7 +137,7 @@ app.get("/character/:id", async (req, res) => {
       // we can catch any errors that occur and handle them
   }
    
-*/
+ */
   try {
     const response = await axios.get(urlToQuery);
     console.log(response.data);
@@ -148,6 +152,10 @@ app.get("/character/:id", async (req, res) => {
     console.log("The error that happened", error.response.data.error);
     res.send("There was an error");
   }
+});
+
+app.get("/yetAnoterRoute", (req, res) => {
+  res.render("yetAnotherPage");
 });
 
 app.listen(PORT, () => {
