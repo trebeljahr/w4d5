@@ -1,0 +1,53 @@
+<a href="/character/1">Go to Rick Sanchez' Page</a>
+
+<h1>Search Rick and Morty Character for FREE!</h1>
+
+{{!-- form action="url" is the url that we want to redirect on form submit --}}
+{{!-- method="HTTPmethod" is the method we want to use (usually get or post) --}}
+<form action="/findCharacter" method="get">
+    <label for="name-input">Character Name:</label>
+    <input 
+        id="name-input"
+        {{!-- name= is the important part here --}}
+        {{!-- this appends ?name={{whateverTheUserTypedInTheBox}} --}}
+        {{!-- if we change name="email" we would append --}}
+        {{!-- this appends ?email={{whateverTheUserTypedInTheBox}} --}}
+        {{!-- type="text" specifies the type of input, say number, text, email etc. --}}
+        {{!-- much more documentation on all of this is, like always for HTML/CSS/JS, on MDN --}}
+        {{!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input --}}
+        name="name"
+        value=""
+        type="text"
+        placeholder="Type the Character Name please"
+    />
+
+    {{!-- we could have a second input and it would append both at the end of the redirect from the form --}}
+    {{!-- i.e. if we were to uncomment the code below we would get --}}
+    {{!--  ?name={{whatUserTyped}}&number={{numberUserChose}} --}}
+    {{!-- maybe something like this: ?name=rick&number=5 --}}
+    {{!-- 
+    <label for="number-input">Some Number:</label>
+    <input 
+        id="number-input"
+        name="number"
+        value=""
+        type="number"
+    /> --}}
+
+
+    {{!-- here type="submit" tells html that this button when clicked submits the form! --}}
+    <button type="submit">Send!</button>
+</form>
+
+{{!-- 
+<form action="https://randomuser.me/api/" method="get">
+    <label for="result-number-input">Number Of Results:</label>
+    <input 
+        id="result-number-input"
+        name="result"
+        value=""
+        type="number"
+        placeholder="Number of Results you Need"
+    />
+    <button type="submit">Send!</button>
+</form> --}}
